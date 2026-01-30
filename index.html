@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>高考志愿填报</title>
+    <meta name="description" content="高考志愿填报">
+    <meta name="keywords" content="高考志愿填报">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Jhenghei", sans-serif;
+        }
+        #i5mf5s {
+            background-color: #000000;
+            background-image: url('img/bg6.jpg');
+        }
+       .logo path {
+            pointer-events: none;
+            fill: none;
+            stroke-linecap: round;
+            stroke-width: 7;
+            stroke: rgb(255, 255, 255);
+        }
+       .wechat-group img {
+            max-width: 220px;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+       .welcome-img img {
+            width: 100%;
+        }
+        #header:not(.sticky-header) #logo a {
+            opacity: 0;
+            pointer-events: none;
+        }
+       .nav-link {
+            color: #fff500;
+        }
+       .form-floating.mb-4 {
+            height: 1296px;
+        }
+       .wrapper.bg-light.wrapper-border {
+            background-image: url('img/bg4.jpg');
+        }
+       .c23783,.c23932 {
+            color: black;
+            width: 165px;
+            height: 200px;
+        }
+       .card-body.p-12 {
+            color: #000000;
+        }
+       .navbar.navbar-expand-lg.fancy.navbar-light.navbar-bg-light.transparent.navbar-clone.fixed {
+            background-image: url('img/bg5.jpg');
+        }
+       .c74052 {
+            padding: 1rem;
+            text-align: center;
+            color: #ff0051;
+        }
+       .c95205 {
+            top: -2rem;
+            right: -1.9rem;
+        }
+       .c96641 {
+            font-size: 1rem;
+        }
+        /* 媒体查询用于适配不同屏幕尺寸 */
+        @media (max-width: 768px) {
+           .form-floating.mb-4 {
+                height: auto;
+            }
+           .c23783,.c23932 {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="高考志愿填报|高考志愿填报|高考|教育|大学|志愿"/>
+    <meta name="keywords" content="高考志愿填报,高考志愿填报,高考,教育,大学,志愿"/>
+    <meta name="author" content="Lapus"/>
+    <link rel="preload" href="fonts/Unicons.woff2" as="font" type="font/woff2" crossorigin=""/>
+    <link rel="preload" href="img/blob.svg" as="image" crossorigin=""/>
+    <link rel="shortcut icon" href="img/favicon.png"/>
+    <link rel="stylesheet" href="css/plugins.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/pink.css"/>
+    <!-- 谷歌验证网站所有权 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6223767282318859"
+     crossorigin="anonymous"></script>
+    <!-- 百度验证网站所有权 -->
+    <meta name="baidu-site-verification" content="f5Vibs6xzR" />
+</head>
+<body>
+    <nav id="sticky-navbar" class="navbar navbar-expand-lg fancy navbar-light navbar-bg-light transparent navbar-clone fixed">
+        <div class="container">
+            <div class="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
+                <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                    <div class="offcanvas-header d-lg-none">
+                        <h3 class="text-white fs-30 mb-0">高考志愿填报</h3>
+                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" class="btn-close btn-close-white"></button>
+                    </div>
+                    <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"></li>
+                            <li class="nav-item dropdown">
+                                <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle">业内资讯</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="http://www.hebeea.edu.cn/" class="dropdown-item">教育咨询</a><a href="https://www.neea.edu.cn/" class="dropdown-item">考试信息</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle">联系我们</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="https://wx.zsxq.com/group/28888414518811" class="dropdown-item">知识星球</a></li>
+                                    <li class="nav-item"><a href="https://mp.weixin.qq.com/s/25w6HblF1BZkzUhwRN6Cdw" class="dropdown-item">微信公众号</a></li>
+                                    <li class="dropdown dropdown-submenu dropend"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- /.navbar-nav -->
+                        <div class="offcanvas-footer d-lg-none">
+                            <div>
+                                <a href="mailto:first.last@email.com" class="link-inverse">help@lapus.cn</a><br/> 00 (123) 456 78 90 <br/>
+                                <nav class="nav social social-white mt-4">
+                                    <a href="#"><i class="uil uil-twitter"></i></a>
+                                    <a href="#"><i class="uil uil-facebook-f"></i></a>
+                                    <a href="#"><i class="uil uil-dribbble"></i></a>
+                                    <a href="#"><i class="uil uil-instagram"></i></a>
+                                    <a href="#"><i class="uil uil-youtube"></i></a>
+                                </nav>
+                                <!-- /.social -->
+                            </div>
+                        </div>
+                        <!-- /.offcanvas-footer -->
+                    </div>
+                    <!-- /.offcanvas-body -->
+                </div>
+                <!-- /.navbar-collapse -->
+                <div class="navbar-other w-100 d-flex ms-auto">
+                    <div id="ixgz3j" class="c74052"><b>高考志愿填报</b></div>
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                        <li class="nav-item"><!-- /.social --></li>
+                        <li class="nav-item d-lg-none">
+                            <button class="hamburger offcanvas-nav-btn"><span></span></button>
+                        </li>
+                    </ul>
+                    <!-- /.navbar-nav -->
+                </div>
+                <!-- /.navbar-other -->
+            </div>
+            <!-- /.navbar-collapse-wrapper -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class="content-wrapper">
+        <header class="wrapper bg-gray">
+            <nav class="navbar navbar-expand-lg fancy navbar-light navbar-bg-light">
+                <div class="container">
+                    <!-- /.navbar-collapse-wrapper -->
+                </div>
+                <!-- /.container -->
+            </nav>
+            <!-- /.navbar -->
+        </header>
+        <!-- /header -->
+        <!-- /section -->
+        <section class="wrapper bg-light wrapper-border">
+            <!-- /.container -->
+        </section>
+        <!-- /section -->
+        <nav class="navbar navbar-expand-lg fancy navbar-light navbar-bg-light transparent navbar-clone fixed">
+            <div class="container">
+                <div class="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
+                    <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                        <div class="offcanvas-header d-lg-none">
+                            <h3 class="text-white fs-30 mb-0">高考志愿填报</h3>
+                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" class="btn-close btn-close-white"></button>
+                        </div>
+                        <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"></li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle">业内资讯</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a href="http://www.hebeea.edu.cn/" class="dropdown-item">教育咨询</a>
+                                            <a href="https://www.neea.edu.cn/" class="dropdown-item">考试信息</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle">联系我们</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a href="https://wx.zsxq.com/group/28888414518811" class="dropdown-item">知识星球</a></li>
+                                        <li class="nav-item"><a href="https://mp.weixin.qq.com/s/25w6HblF1BZkzUhwRN6Cdw" class="dropdown-item">微信公众号</a></li>
+                                        <li class="dropdown dropdown-submenu dropend"></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                            </li>
+                            </ul>
+                        </div>
+                        <!-- /.offcanvas-body -->
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <div class="navbar-other w-100 d-flex ms-auto">
+                        <div class="c74052"><b>高考志愿填报</b></div>
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <li class="nav-item"><!-- /.social --></li>
+                            <li class="nav-item d-lg-none">
+                                <button class="hamburger offcanvas-nav-btn"><span></span></button>
+                            </li>
+                        </ul>
+                        <!-- /.navbar-nav -->
+                    </div>
+                    <!-- /.navbar-other -->
+                </div>
+                <!-- /.navbar-collapse-wrapper -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        <section class="wrapper bg-light wrapper-border">
+            <div class="container py-14 pt-md-18 pb-md-16">
+                <!--/.row -->
+                <div class="card bg-soft-violet mb-10">
+                    <div class="card-body p-12 pb-0">
+                        <div class="row">
+                            <div class="col-lg-4 pb-12 align-self-center">
+                                <h3 class="h1 post-title mb-3">使用说明</h3>
+                                <p>在高考成绩出来后参考本省一分一档表统计您孩子在本省的高考排名，使用孩子在本省的排名情况填写本网站的志愿填报模块，当前免费用户只展示20个志愿，完整志愿清单添加微信获取。</p>
+                            </div>
+                                
+                            <div class="col-lg-4 pb-12 align-self-center">
+                                <iframe src=".\211.html" style="width: 100%; height: 30vh; border: 0;"></iframe>
+                            </div>    
+                            <div class="col-lg-4 pb-12 align-self-center">
+                                <iframe src=".\985.html" style="width: 100%; height: 30vh; border: 0;"></iframe>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!--/.card-body -->
+                </div>
+                <!--/.card -->
+                <div class="card bg-soft-blue mb-10">
+                    <div class="card-body p-12">
+                        <section class="wrapper">
+                            <div class="row">
+                                <h2 class="mb-3">
+                                    <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                        高考志愿填报
+                                    </h3>
+                                </h2>
+                            </div>
+                        </section>
+                    <iframe id="myIframe" style="width: 100%; height: 100vh; border: 0;"></iframe>
+                    <script>
+                        // 获取当前URL
+                        const urlParams = new URLSearchParams(window.location.search);
+                        // 获取message参数的值
+                        const messageParam = urlParams.get('message');
+                        // 根据message参数的值设置iframe的src
+                        if (messageParam === 'hanyafei') {
+                            // document.getElementById('myIframe').src = './gaokaoall.html';
+                            document.getElementById('myIframe').src = './gaokao.html';
+                        } else {
+                            document.getElementById('myIframe').src = './gaokao.html';
+                        }
+                    </script>
+                    <!-- 网页后缀为?message=hanyafei -->
+                    </div>
+                    <!--/.card-body -->
+                </div>
+
+                <!--/.card -->
+                <div class="row gx-md-8 gx-xl-10">
+                    <div class="col-lg-6">
+                        <div class="card bg-soft-leaf mb-10">
+                            <div class="card-body p-12 pb-0">
+                                <h3 class="h1 post-title mb-3">专业说明</h3>
+                                <p>对高考对应的专业进行解读</p>
+                            </div>
+                            <iframe src=".\view\zhuanye.html" style="width: 100%; height: 50vh; border: 0;"></iframe>
+                        </div>
+                        <!--/.card -->
+                    </div>
+                    <!-- /column -->
+                    <div class="col-lg-6">
+                        <div class="card bg-soft-pink">
+                            <div class="card-body p-12 pb-0">
+                                <h3 class="h1 post-title mb-3">职业说明</h3>
+                                <p>对学生未来涉及的职业进行解读</p>
+                            </div>
+                            <iframe src=".\view\zhiye.html" style="width: 100%; height: 50vh; border: 0;"></iframe>
+                        </div>
+                        <!--/.card -->
+                    </div>
+                    <!-- /column -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /section -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer id="i5mf5s">
+        <div class="container pt-14 pt-md-18 pb-7">
+            <div class="card bg-soft-primary mb-8">
+                <div class="card-body p-12">
+                    <div class="row gx-md-8 gx-xl-12 gy-10">
+                        <div class="col-lg-6">
+                            <img src="img/email.svg" alt="" class="svg-inject icon-svg icon-svg-sm mb-4"/>
+                            <h2 class="display-4 mb-3 pe-lg-10">使用过程中遇到问题或者需求更加专业的服务请与我们联系</h2>
+                            <p class="lead pe-lg-12 mb-0">添加客服微信免费获取更全面的各个职业对应的薪酬清单和更专业的志愿填报服务</p>
+                        </div>
+                        <!-- /column -->
+                        <div class="col-lg-6">
+                            <form method="post" action="./assets/php/contact.php" novalidate="" class="contact-form needs-validation">
+                                <div class="messages"></div>
+                                <div class="row gx-4">
+                                    <div class="col-md-6"></div>
+                                    <!-- /column -->
+                                    <div class="col-md-6"></div>
+                                    <!-- /column -->
+                                    <div class="col-12"></div>
+                                    <!-- /column -->
+                                    <!-- /column -->
+                                </div>
+                                <!-- /.row -->
+                            </form>
+                            <img src="img/weixinp2.jpg" class="c23783"/>
+                            <img src="img/weixinp1.jpg" class="c23932"/>
+                            <!-- /form -->
+                        </div>
+                        <div class="col-lg-6">
+                            <form method="post" action="./assets/php/contact.php" novalidate="" class="contact-form needs-validation">
+                                <div class="messages"></div>
+                                <div class="row gx-4">
+                                    <div class="col-md-6"></div>
+                                    <!-- /column -->
+                                    <div class="col-md-6"></div>
+                                    <!-- /column -->
+                                    <div class="col-12"></div>
+                                    <!-- /column -->
+                                    <!-- /column -->
+                                </div>
+                                <!-- /.row -->
+                            </form>
+                            <!-- /form -->
+                        </div>
+                        <!-- /column -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!--/.card-body-->
+            </div>
+
+
+
+            <!-- a标签节省内存 -->
+             
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                    <!--/.row -->
+                    <div class="row">
+                        <div id="onescore" class="target-content text-center">
+                            <h2>历年一分一档表</h2>
+                            <a href=".\view\onescore.html"style="font-weight: bold; text-decoration: underline;">
+                                查看历年一分一档表
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="src" class="target-content text-center">
+                            <h2>各省院校分布图</h2>
+                            <a href=".\src.html"style="font-weight: bold; text-decoration: underline;">
+                                查看各省院校分布图
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="2022" class="target-content text-center">
+                            <h2>2022投档排名</h2>
+                            <a href=".\view\2022.html"style="font-weight: bold; text-decoration: underline;">
+                                查看2023投档排名
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="2023" class="target-content text-center">
+                            <h2>2023投档排名</h2>
+                            <a href=".\view\2023.html"style="font-weight: bold; text-decoration: underline;">
+                                查看2023投档排名
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="2023" class="target-content text-center">
+                            <h2>科学计算器</h2>
+                            <a href=".\computer.html"style="font-weight: bold; text-decoration: underline;">
+                                查看科学计算器
+                            </a>
+                        </div>
+                    </div>
+                    </section>
+                </div>                   
+            </div>
+
+            
+
+            <!-- iframe方式会卡顿 -->
+            <!-- 
+
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                        <div class="row">
+                            <h2 class="mb-3">
+                                <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                    科学计算器
+                                </h3>
+                            </h2>
+                        </div>
+                    </section>
+                    <iframe src=".\computer.html" style="width: 100%; height: 50vh; border: 0;"></iframe>
+                </div>
+            </div>
+
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                        <div class="row">
+                            <h2 class="mb-3">
+                                <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                    历年一分一档表
+                                </h3>                                
+                            </h2>
+                        </div>
+                    </section>
+                    <iframe src=".\view\onescore.html" loading="lazy" style="width: 100%; height: 100vh; border: 0;"></iframe>
+                </div>                   
+            </div>
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                        <div class="row">
+                            <h2 class="mb-3">
+                                <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                    历年一分一档表
+                                </h3>                                
+                            </h2>
+                        </div>
+                    </section>
+                    <iframe src=".\view\onescore.html" loading="lazy" style="width: 100%; height: 100vh; border: 0;"></iframe>
+                </div>                   
+            </div>
+
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                        <div class="row">
+                            <h2 class="mb-3">
+                                <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                    各省院校分布
+                                </h3>                                
+                            </h2>
+                        </div>
+                    </section>
+                    <iframe src=".\src.html" loading="lazy" style="width: 100%; height: 100vh; border: 0;"></iframe>
+                </div>                   
+            </div>
+
+
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                        <div class="row">
+                            <h2 class="mb-3">
+                                <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                    2022投档排名
+                                </h3>                                
+                            </h2>
+                        </div>
+                    </section>
+                    <iframe src=".\view\2022.html" loading="lazy" style="width: 100%; height: 100vh; border: 0;"></iframe>
+                </div>                   
+            </div>
+
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                        <div class="row">
+                            <h2 class="mb-3">
+                                <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                    2023投档排名
+                                </h3>                                
+                            </h2>
+                        </div>
+                    </section>
+                    <iframe src=".\view\2023.html" loading="lazy" style="width: 100%; height: 100vh; border: 0;"></iframe>
+                </div>                   
+            </div>
+            -->
+
+            <div class="card bg-soft-blue mb-10">
+                <div class="card-body p-12">
+                    <section class="wrapper">
+                        <div class="row">
+                            <h2 class="mb-3">
+                                <h3 id="i4b4jg-2" draggable="false" class="h1 post-title mb-3 gjs-selected" style="text-align: center;">
+                                    薪酬说明
+                                </h3>
+                            </h2>
+                        </div>
+                    </section>
+                    <div>
+                        <iframe src=".\view\xinchouhot.html" style="width: 100%; height: 50vh; border: 0;"></iframe>
+                    </div>
+                    <div>
+                        <iframe src=".\view\xinchou.html" style="width: 100%; height: 30vh; border: 0;"></iframe>
+                    </div>                
+                </div>
+            </div>
+
+        <!--/.card -->
+        <div class="d-md-flex align-items-center justify-content-between">
+            <p class="mb-2 mb-lg-0">© china Lapus. All rights reserved.</p>
+            <nav class="nav social social-muted mb-0 text-md-end">
+                <a href=".\src.html">各省院校分布</a>
+                <a href=".\view\onescore.html">历年一分一档表</a>
+                <a href=".\view\2022.html">2022投档排名</a>
+                <a href=".\view\2023.html">2023投档排名</a>
+                <a href=".\computer.html">科学计算器</a>
+            </nav>
+            <!-- /.social -->
+        </div>
+    </div>
+    <!-- /.container -->
+</footer>
+<script src="js/plugins.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
