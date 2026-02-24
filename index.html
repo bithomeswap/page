@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DataFrame 筛选表格 - 移动端适配</title>
+    <title>实习就业内推</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
@@ -14,6 +14,7 @@
             line-height: 1.5;
             /* 防止 body 滚动影响 drawer */
             overscroll-behavior: none;
+            padding-bottom: 80px; /* 为悬浮按钮留出空间 */
         }
 
         /* 顶部工具栏 */
@@ -518,6 +519,23 @@
             font-size: 18px;
             font-weight: 600;
             flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f5f5f5;
         }
 
         .modal-body {
@@ -572,6 +590,109 @@
             font-size: 14px;
         }
 
+        /* 聊天反馈弹窗样式 */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: #217346;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            border-color: #217346;
+        }
+
+        .submit-status {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+
+        .status-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .success {
+            color: #217346;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        /* 悬浮聊天按钮样式 - 核心修改 */
+        .floating-chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #217346;
+            color: white;
+            border: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(33, 115, 70, 0.3);
+            cursor: pointer;
+            z-index: 150;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .floating-chat-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(33, 115, 70, 0.4);
+        }
+
+        .floating-chat-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 响应式调整悬浮按钮大小 */
+        @media (max-width: 767px) {
+            .floating-chat-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
         /* 响应式断点 */
         @media (min-width: 768px) {
             .mobile-list { display: none; }
@@ -621,8 +742,8 @@
         <div class="header-top">
             <h1>📊 数据筛选</h1>
             <div class="header-actions">
-                <button class="icon-btn" onclick="showImportModal()" title="导入JSON">📥</button>
                 <button class="icon-btn" onclick="openFilterDrawer()" title="筛选">🔍</button>
+                <!-- 移除了顶部的聊天按钮 -->
             </div>
         </div>
         <div class="filter-chips" id="filterChips">
@@ -691,25 +812,48 @@
         </div>
     </div>
 
-    <!-- JSON导入模态框 -->
-    <div class="modal" id="importModal" onclick="if(event.target===this)hideImportModal()">
+    <!-- 聊天反馈弹窗 -->
+    <div class="modal" id="chatModal">
         <div class="modal-content">
-            <div class="modal-header">导入 JSON 数据</div>
+            <div class="modal-header">
+                <span>💬 在线反馈/咨询</span>
+                <button class="modal-close" onclick="closeChatModal()">×</button>
+            </div>
             <div class="modal-body">
-                <textarea class="json-textarea" id="jsonInput" placeholder='[{"姓名":"张三","部门":"技术部"...}]'></textarea>
-                <div class="file-input-wrapper">
-                    <input type="file" id="fileInput" accept=".json" onchange="handleFileUpload(event)">
-                    <label for="fileInput" class="file-input-label">
-                        📁 点击上传 .json 文件
-                    </label>
+                <div id="chatFormContainer">
+                    <div class="form-group">
+                        <label class="form-label">姓名</label>
+                        <input type="text" class="form-input" id="chatName" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">联系方式</label>
+                        <input type="text" class="form-input" id="chatContact" placeholder="电话/微信/邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">留言内容</label>
+                        <textarea class="form-textarea" id="chatMessage" placeholder="请详细描述您的问题或需求..."></textarea>
+                    </div>
+                </div>
+                <div class="submit-status" id="successStatus">
+                    <div class="status-icon success">✓</div>
+                    <h3>提交成功！</h3>
+                    <p style="margin-top:8px;color:#666;">我们会尽快与您联系</p>
+                </div>
+                <div class="submit-status" id="errorStatus">
+                    <div class="status-icon error">✕</div>
+                    <h3>提交失败</h3>
+                    <p style="margin-top:8px;color:#666;" id="errorMsg">请稍后重试</p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="hideImportModal()">取消</button>
-                <button class="btn btn-primary" onclick="loadJSON()">加载数据</button>
+                <button class="btn btn-secondary" onclick="closeChatModal()">取消</button>
+                <button class="btn btn-primary" id="submitChatBtn" onclick="submitChatMessage()">提交</button>
             </div>
         </div>
     </div>
+
+    <!-- 悬浮聊天按钮 - 新增 -->
+    <button class="floating-chat-btn" onclick="openChatModal()" title="在线反馈/咨询">💬</button>
 
     <script>
         // 数据存储
@@ -726,7 +870,6 @@
         // 初始化
         window.onload = function() {
             loadData(sampleData);
-            document.getElementById('jsonInput').value = JSON.stringify(sampleData, null, 2);
         };
 
         // 加载数据
@@ -1108,43 +1251,19 @@
             updateAllViews();
         }
 
-        // JSON导入
-        function showImportModal() {
-            document.getElementById('importModal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function hideImportModal() {
-            document.getElementById('importModal').classList.remove('show');
-            document.body.style.overflow = '';
-        }
-
         function handleFileUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
             const reader = new FileReader();
             reader.onload = e => {
-                document.getElementById('jsonInput').value = e.target.result;
+                try {
+                    const data = JSON.parse(e.target.result);
+                    loadData(data);
+                } catch (err) {
+                    alert('JSON格式错误');
+                }
             };
             reader.readAsText(file);
-        }
-
-        function loadJSON() {
-            try {
-                const data = JSON.parse(document.getElementById('jsonInput').value);
-                if (Array.isArray(data)) {
-                    loadData(data);
-                    hideImportModal();
-                } else if (data.data && Array.isArray(data.data)) {
-                    loadData(data.data);
-                    if (data.filters) currentFilters = data.filters;
-                    hideImportModal();
-                } else {
-                    alert('JSON格式错误：应为数组或包含 data 字段的对象');
-                }
-            } catch(e) {
-                alert('解析错误: ' + e.message);
-            }
         }
 
         // 响应式处理
@@ -1166,6 +1285,123 @@
         document.getElementById('filterDrawer').addEventListener('touchmove', function(e) {
             e.stopPropagation();
         }, { passive: false });
+
+        // 聊天反馈弹窗相关函数
+        function openChatModal() {
+            const modal = document.getElementById('chatModal');
+            modal.classList.add('show');
+            
+            // 重置表单状态
+            resetChatForm();
+            
+            // 禁止body滚动
+            document.body.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none';
+        }
+
+        function closeChatModal() {
+            const modal = document.getElementById('chatModal');
+            modal.classList.remove('show');
+            
+            // 恢复body滚动
+            document.body.style.overflow = '';
+            document.body.style.touchAction = '';
+        }
+
+        function resetChatForm() {
+            // 重置表单和状态
+            document.getElementById('chatFormContainer').style.display = 'block';
+            document.getElementById('successStatus').style.display = 'none';
+            document.getElementById('errorStatus').style.display = 'none';
+            document.getElementById('submitChatBtn').style.display = 'block';
+            
+            // 清空表单
+            document.getElementById('chatName').value = '';
+            document.getElementById('chatContact').value = '';
+            document.getElementById('chatMessage').value = '';
+        }
+
+        // 提交聊天信息到飞书
+        async function submitChatMessage() {
+            // 获取表单数据
+            const name = document.getElementById('chatName').value.trim();
+            const contact = document.getElementById('chatContact').value.trim();
+            const message = document.getElementById('chatMessage').value.trim();
+            
+            // 表单验证
+            if (!name) {
+                alert('请输入姓名');
+                return;
+            }
+            if (!message) {
+                alert('请输入留言内容');
+                return;
+            }
+            
+            // 禁用提交按钮
+            const submitBtn = document.getElementById('submitChatBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '提交中...';
+            
+            try {
+                // 构造飞书消息内容
+                const feishuMessage = {
+                    "msg_type": "post",
+                    "content": {
+                        "post": {
+                            "zh-CN": {
+                                "title": "📩 新的用户反馈/咨询",
+                                "content": [
+                                    [
+                                        { "tag": "text", "text": `姓名：${name}` }
+                                    ],
+                                    [
+                                        { "tag": "text", "text": `联系方式：${contact || '未填写'}` }
+                                    ],
+                                    [
+                                        { "tag": "text", "text": `留言内容：${message}` }
+                                    ],
+                                    [
+                                        { "tag": "text", "text": `提交时间：${new Date().toLocaleString()}` }
+                                    ]
+                                ]
+                            }
+                        }
+                    }
+                };
+
+                // 飞书机器人配置 - 请替换为你的飞书机器人Webhook地址
+                const FEISHU_WEBHOOK_URL = "https://open.feishu.cn/open-apis/bot/v2/hook/646392d3-c205-41fc-b7c0-01a342eac341";
+        
+                // 发送到飞书机器人
+                const response = await fetch(FEISHU_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(feishuMessage)
+                });
+                
+                if (response.ok) {
+                    // 提交成功
+                    document.getElementById('chatFormContainer').style.display = 'none';
+                    document.getElementById('successStatus').style.display = 'block';
+                    submitBtn.style.display = 'none';
+                } else {
+                    throw new Error('飞书接口返回错误');
+                }
+            } catch (error) {
+                console.error('提交失败:', error);
+                // 提交失败
+                document.getElementById('chatFormContainer').style.display = 'none';
+                document.getElementById('errorStatus').style.display = 'block';
+                document.getElementById('errorMsg').textContent = error.message || '请稍后重试';
+            } finally {
+                // 恢复按钮状态
+                submitBtn.disabled = false;
+                submitBtn.textContent = '提交';
+            }
+        }
     </script>
 </body>
 </html>
